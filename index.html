@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mojs animation</title>
+	</head>
+	<body>
+        <div id="bouncyCircle"></div>
+
+        <div id="spinner"></div>
+  
+		<script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+		<script>
+			const bouncyCircle = new mojs.Shape({
+				parent: "#bouncyCircle",
+				shape: "circle",
+				fill: { "#F64040": "#FC46AD" },
+				radius: { 20: 80 },
+				duration: 2000,
+				isYoyo: true,
+				isShowStart: true,
+				easing: "elastic.inout",
+				repeat: -1,
+			});
+
+			bouncyCircle.play();
+
+            const spinner = new mojs.Shape({
+                parent:           '#spinner',
+                shape:            'circle',
+                stroke:           '#FC46AD',
+                strokeDasharray:  '125, 125',
+                strokeDashoffset: {'0': '-125'},
+                strokeWidth:      4,
+                fill:             'none',
+                left:             '50%',
+                top:              '50%',
+                rotate:            {'-90': '270'},
+                radius:           20,
+                isShowStart:      true,
+                duration:         2000,
+                easing:           'back.in',
+              })
+              .then({
+                rotate:            {'-90': '270'},
+                strokeDashoffset: {'-125': '-250'},
+                duration:         3000,
+                easing:           'cubic.out',
+              });
+              
+              spinner.play();
+		</script>
+	</body>
+</html>
